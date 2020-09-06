@@ -1,0 +1,9 @@
+<div>
+  <app-user-show *ngFor="let user of users"
+                 [firstName]="user.firstName"
+                 [lastName]="user.lastName"
+                 [age]="user.age"
+                 [cityOfResidence]="user.cityOfResidence">
+
+  </app-user-show>
+</div>
