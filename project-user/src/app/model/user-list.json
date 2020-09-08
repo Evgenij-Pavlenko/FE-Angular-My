@@ -1,0 +1,10 @@
+{
+  "users": [
+    {
+      "first_name": "Vasja",
+      "last_name": "Vasiljev",
+      "age": 30,
+      "city": "Berlin"
+    }
+  ]
+}
