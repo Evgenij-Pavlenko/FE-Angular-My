@@ -4,7 +4,7 @@ import {FirstNameFilterComponent} from './first-name-filter/first-name-filter.co
 
 const routes: Routes = [
   {
-    path: '/users/first-name/:firstName',
+    path: 'users/first-name/:firstName',
     component: FirstNameFilterComponent
   }
 ];

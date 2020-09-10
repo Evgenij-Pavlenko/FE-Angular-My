@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {User} from '../model/user';
 import {ActivatedRoute} from '@angular/router';
 
@@ -8,6 +8,14 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./first-name-filter.component.scss']
 })
 export class FirstNameFilterComponent implements OnInit {
+  @Input()
+  firstNameFilter: string;
+
+  @Input()
+  user: string;
+
+  firstName: string;
+
   users: User[] = [
     {
       firstName: 'Vasja',
@@ -22,16 +30,19 @@ export class FirstNameFilterComponent implements OnInit {
       city: 'Los Angeles'
     }
   ];
-  firstNameFilter: string;
-  user: User;
 
-  constructor(route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+    this.route.params.subscribe((params) => {
+      console.log('Params: ' + params.firstName);
+      this.filter(params.firstName);
+    });
   }
 
   filter(firstName: string): User[] {
+    console.log('First name: ' + firstName);
     const filteredUsers: User[] = [];
     this.users.forEach(user => {
       if (user.firstName === firstName) {
@@ -40,5 +51,19 @@ export class FirstNameFilterComponent implements OnInit {
     });
     return filteredUsers;
   }
+
+/*  Params: undefined
+  first-name-filter.component.ts:45 First name: undefined
+  first-name-filter.component.ts:45 First name: undefined
+  first-name-filter.component.ts:45 First name: undefined
+  core.js:26833 Angular is running in development mode. Call enableProdMode() to enable production mode.
+  first-name-filter.component.ts:39 Params: Vasja
+  first-name-filter.component.ts:45 First name: Vasja
+  first-name-filter.component.ts:45 First name: undefined
+  first-name-filter.component.ts:45 First name: undefined
+  first-name-filter.component.ts:45 First name: undefined
+  first-name-filter.component.ts:45 First name: undefined
+  client:52 [WDS] Live Reloading enabled.
+  */
 
 }
