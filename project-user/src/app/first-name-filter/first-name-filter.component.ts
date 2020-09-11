@@ -8,11 +8,9 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./first-name-filter.component.scss']
 })
 export class FirstNameFilterComponent implements OnInit {
-  @Input()
-  firstNameFilter: string;
 
   @Input()
-  user: string;
+  user: User;
 
   firstName: string;
 
@@ -37,7 +35,7 @@ export class FirstNameFilterComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       console.log('Params: ' + params.firstName);
-      this.filter(params.firstName);
+      this.firstName = params.firstName;
     });
   }
 
