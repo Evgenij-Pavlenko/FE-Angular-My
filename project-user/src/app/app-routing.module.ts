@@ -1,7 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import {FilterContainerComponent} from './filter-container/filter-container.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: 'users/first-name/:firstName',
+    component: FilterContainerComponent
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
