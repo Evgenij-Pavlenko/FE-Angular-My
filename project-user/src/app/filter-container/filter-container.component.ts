@@ -1,12 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {User} from '../model/user';
 import {ActivatedRoute} from '@angular/router';
-import {filter} from 'rxjs/operators';
 
 @Component({
   selector: 'app-filter-container',
   templateUrl: './filter-container.component.html',
-  styleUrls: ['./filter-container.component.scss']
+  styleUrls: ['./filter-container.component.css']
 })
 export class FilterContainerComponent implements OnInit {
 
@@ -19,8 +18,8 @@ export class FilterContainerComponent implements OnInit {
 
   users: User[] = [
     {
-      firstName: 'Vasja',
-      lastName: 'Vasiljev',
+      firstName: 'Vasya',
+      lastName: 'Pupkin',
       age: 20,
       city: 'Berlin'
     },
@@ -32,31 +31,28 @@ export class FilterContainerComponent implements OnInit {
     }
   ];
 
-
-  constructor(private route: ActivatedRoute) {
-  }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
+    this.route.params.subscribe(params => {
       Object.keys(params).forEach((key) =>
         this.filterObject[key] = params[key]
       );
     });
   }
 
-  filter(users: User[], filterUser: User): User[] {
+  filter(users: User[], filter: User): User[] {
     const filteredUsers: User[] = [];
     this.users.forEach(user => {
-      Object.keys(filterUser).forEach(key => {
-        if (filterUser[key] !== null) {
-          if (user[key] === filterUser[key]) {
+      Object.keys(filter).forEach( key => {
+        if (filter[key] !== null) {
+          if (user[key].toString() === filter[key].toString()) {
             filteredUsers.push(user);
           }
         }
       });
     });
-    return filteredUsers;
+    return filteredUsers.length === 0 ? users : filteredUsers;
   }
-
 
 }
