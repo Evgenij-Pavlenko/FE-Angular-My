@@ -35,8 +35,9 @@ export class FilterContainerComponent implements OnInit {
 
   constructor(private route: ActivatedRoute) {
   }
+
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
+    this.route.params.subscribe((params) => {
       Object.keys(params).forEach((key) =>
         this.filterObject[key] = params[key]
       );
@@ -46,7 +47,7 @@ export class FilterContainerComponent implements OnInit {
   filter(users: User[], filterUser: User): User[] {
     const filteredUsers: User[] = [];
     this.users.forEach(user => {
-      Object.keys(filterUser).forEach( key => {
+      Object.keys(filterUser).forEach(key => {
         if (filterUser[key] !== null) {
           if (user[key] === filterUser[key]) {
             filteredUsers.push(user);
