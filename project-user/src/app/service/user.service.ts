@@ -28,7 +28,7 @@ export class UserService {
     const filteredUsers: User[] = [];
     this.getUsers().forEach(user => {
       filter.forEach(element => {
-        if (user[element.key].toString() === element.value.toString()) {
+        if (user[element.key] === element.value.toString()) {
           filteredUsers.push(user);
         }
       });

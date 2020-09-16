@@ -21,7 +21,7 @@ export class FilterContainerComponent implements OnInit {
     const filter = [];
     this.route.params.subscribe(params => {
       if (params.id) {
-        this.user = (User)(this.userService.getUserById(params.id));
+        this.user = (this.userService.getUserById(params.id));
       } else {
         Object.keys(params).forEach((key) =>
           filter.push({ key, value: params[key]})

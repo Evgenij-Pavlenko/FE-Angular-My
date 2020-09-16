@@ -4,10 +4,10 @@ import {User} from '../../model/user';
 
 @Component({
   selector: 'app-uses-container',
-  templateUrl: './uses-container.component.html',
-  styleUrls: ['./uses-container.component.scss']
+  templateUrl: './users-container.component.html',
+  styleUrls: ['./users-container.component.scss']
 })
-export class UsesContainerComponent implements OnInit {
+export class UsersContainerComponent implements OnInit {
   users: User[];
 
   constructor(private userService: UserService) {
